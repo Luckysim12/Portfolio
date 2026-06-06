@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lakshay Sharma — Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --navy:#0B1F3A;--navy2:#132848;--gold:#C9A84C;--gold2:#E8C96A;
+    --light:#F4F6F9;--white:#FFFFFF;--text:#1A1A2E;--muted:#5A6478;
+    --border:#D8DEE8;--accent:#1A4A7A;
+  }
+  body{font-family:'DM Sans',sans-serif;background:var(--light);color:var(--text);font-size:15px;line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+
+  /* NAV */
+  nav{background:var(--navy);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);letter-spacing:0.5px;}
+  .nav-links{display:flex;gap:28px;}
+  .nav-links a{font-size:13px;color:rgba(255,255,255,0.75);font-weight:500;letter-spacing:0.4px;transition:color .2s;}
+  .nav-links a:hover{color:var(--gold2);}
+
+  /* HERO */
+  .hero{background:var(--navy);padding:4rem 2.5rem 4.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+  .hero-left{flex:1;min-width:260px;}
+  .hero-tag{display:inline-block;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold2);font-size:12px;font-weight:500;padding:4px 14px;border-radius:20px;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:1.2rem;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#FFFFFF;line-height:1.15;margin-bottom:0.6rem;}
+  .hero h1 span{color:var(--gold);}
+  .hero-sub{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:1.8rem;max-width:440px;font-weight:300;}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-primary{background:var(--gold);color:var(--navy);padding:10px 24px;border-radius:6px;font-size:13px;font-weight:500;letter-spacing:0.3px;transition:background .2s;cursor:pointer;border:none;}
+  .btn-primary:hover{background:var(--gold2);}
+  .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.35);color:rgba(255,255,255,0.85);padding:10px 24px;border-radius:6px;font-size:13px;font-weight:400;cursor:pointer;transition:border-color .2s;}
+  .btn-outline:hover{border-color:var(--gold);}
+  .hero-right{flex-shrink:0;}
+  .avatar-ring{width:170px;height:170px;border-radius:50%;border:3px solid var(--gold);padding:5px;background:var(--navy2);}
+  .avatar-inner{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#1A4A7A,#0B1F3A);display:flex;align-items:center;justify-content:center;}
+  .avatar-initials{font-family:'Playfair Display',serif;font-size:52px;color:var(--gold);font-weight:700;}
+
+  /* CONTACT STRIP */
+  .contact-strip{background:var(--navy2);border-top:1px solid rgba(201,168,76,0.2);padding:0.8rem 2.5rem;display:flex;gap:2rem;flex-wrap:wrap;}
+  .contact-item{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,0.6);font-size:12.5px;}
+  .contact-item i{color:var(--gold);font-size:15px;}
+
+  /* SECTIONS */
+  section{padding:3.5rem 2.5rem;}
+  .section-label{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+  .section-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:600;color:var(--navy);margin-bottom:2rem;}
+  .section-title span{color:var(--gold);}
+
+  /* KPI CARDS */
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-bottom:2.5rem;}
+  .kpi-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;position:relative;overflow:hidden;}
+  .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);}
+  .kpi-card.blue::before{background:#1A4A7A;}
+  .kpi-card.green::before{background:#1A7A4A;}
+  .kpi-card.red::before{background:#7A1A3A;}
+  .kpi-val{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--navy);line-height:1;}
+  .kpi-label{font-size:12px;color:var(--muted);margin-top:6px;font-weight:400;}
+  .kpi-icon{position:absolute;right:14px;top:14px;font-size:22px;color:rgba(11,31,58,0.1);}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+  .skill-group{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem;}
+  .skill-group-title{font-size:13px;font-weight:500;color:var(--navy);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+  .skill-group-title i{color:var(--gold);font-size:17px;}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:7px;}
+  .tag{background:var(--light);border:1px solid var(--border);border-radius:20px;font-size:12px;padding:4px 12px;color:var(--muted);font-weight:400;}
+  .tag.gold{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.4);color:#8B6914;}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .project-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .project-header{background:var(--navy);padding:1.2rem 1.4rem;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+  .project-icon-wrap{width:40px;height:40px;border-radius:8px;background:rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .project-icon-wrap i{font-size:20px;color:var(--gold);}
+  .project-badge{font-size:10px;background:rgba(201,168,76,0.2);color:var(--gold2);padding:3px 10px;border-radius:20px;font-weight:500;letter-spacing:0.5px;white-space:nowrap;}
+  .project-title{font-family:'Playfair Display',serif;font-size:15px;color:#FFFFFF;font-weight:600;margin-top:2px;}
+  .project-body{padding:1.3rem 1.4rem;}
+  .project-desc{font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.6;}
+  .project-metrics{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem;}
+  .metric-pill{background:var(--light);border:1px solid var(--border);border-radius:6px;padding:5px 10px;font-size:11.5px;color:var(--navy);font-weight:500;}
+  .metric-pill i{color:var(--gold);font-size:12px;margin-right:4px;}
+  .project-stack{display:flex;gap:6px;flex-wrap:wrap;}
+  .stack-tag{font-size:11px;background:rgba(26,74,122,0.08);color:var(--accent);padding:3px 9px;border-radius:4px;border:1px solid rgba(26,74,122,0.2);}
+
+  /* EDUCATION */
+  .edu-timeline{display:flex;flex-direction:column;gap:16px;}
+  .edu-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem;display:flex;gap:16px;align-items:flex-start;}
+  .edu-icon{width:44px;height:44px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .edu-icon i{font-size:20px;color:var(--gold);}
+  .edu-degree{font-size:15px;font-weight:500;color:var(--navy);margin-bottom:2px;}
+  .edu-inst{font-size:13px;color:var(--muted);}
+  .edu-year{font-size:12px;color:var(--gold);font-weight:500;margin-top:5px;}
+  .edu-note{font-size:12.5px;color:var(--muted);margin-top:6px;font-style:italic;}
+
+  /* ACHIEVEMENTS */
+  .achievements-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;}
+  .ach-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.4rem;display:flex;gap:14px;}
+  .ach-icon{width:40px;height:40px;border-radius:8px;background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ach-icon i{font-size:20px;color:var(--gold);}
+  .ach-title{font-size:14px;font-weight:500;color:var(--navy);margin-bottom:4px;}
+  .ach-desc{font-size:12.5px;color:var(--muted);line-height:1.5;}
+
+  /* FOOTER */
+  footer{background:var(--navy);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .footer-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);}
+  .footer-links{display:flex;gap:20px;}
+  .footer-links a{font-size:13px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:6px;transition:color .2s;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-copy{font-size:12px;color:rgba(255,255,255,0.35);width:100%;text-align:center;margin-top:4px;}
+
+  /* DIVIDER */
+  .divider{height:1px;background:var(--border);margin:0 2.5rem;}
+
+  /* SUMMARY */
+  .summary-box{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.8rem 2rem;border-left:4px solid var(--gold);}
+  .summary-box p{font-size:14.5px;color:var(--muted);line-height:1.8;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">LS.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Open to Work &nbsp;·&nbsp; Junior Data Analyst</div>
+    <h1>Lakshay <span>Sharma</span></h1>
+    <p class="hero-sub">Data Analyst | Python · SQL · Excel · KPI Dashboards<br>IIT Indore Certified in AI &amp; Data Science</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+      <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="avatar-ring">
+      <div class="avatar-inner">
+        <span class="avatar-initials">LS</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <div class="contact-item"><i class="ti ti-map-pin"></i> Bikaner, Rajasthan, India</div>
+  <div class="contact-item"><i class="ti ti-phone"></i> +91 7877573509</div>
+  <div class="contact-item"><i class="ti ti-mail"></i> luckysim574@gmail.com</div>
+  <div class="contact-item"><i class="ti ti-brand-linkedin"></i> linkedin.com/in/lakshay-sharma</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <div class="section-title">Professional <span>Summary</span></div>
+  <div class="summary-box">
+    <p>Detail-oriented and analytical Data Analyst certified in AI &amp; Data Science by IIT Indore. Equipped with a strong foundation in Computer Applications (BCA) and hands-on experience in data extraction, cleaning, exploratory data analysis (EDA), and data visualization. Proficient in Python, SQL, and Advanced Excel to transform complex datasets into clear, actionable business insights. Highly driven to contribute to data-informed decision-making and collaborative business growth.</p>
+  </div>
+</section>
+
+<!-- KPI HIGHLIGHTS -->
+<div class="divider"></div>
+<section>
+  <div class="section-label">Impact at a Glance</div>
+  <div class="section-title">Key <span>Metrics</span></div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <i class="ti ti-database kpi-icon"></i>
+      <div class="kpi-val">10K+</div>
+      <div class="kpi-label">Rows cleaned &amp; processed in Python EDA project</div>
+    </div>
+    <div class="kpi-card blue">
+      <i class="ti ti-trending-up kpi-icon"></i>
+      <div class="kpi-val">10%</div>
+      <div class="kpi-label">Projected increase in repeat sales from insights</div>
+    </div>
+    <div class="kpi-card green">
+      <i class="ti ti-clock kpi-icon"></i>
+      <div class="kpi-val">20%</div>
+      <div class="kpi-label">Reduction in manual reporting time via Power Query</div>
+    </div>
+    <div class="kpi-card red">
+      <i class="ti ti-certificate kpi-icon"></i>
+      <div class="kpi-val">3</div>
+      <div class="kpi-label">End-to-end data projects delivered independently</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div class="divider"></div>
+<section id="skills">
+  <div class="section-label">What I Bring</div>
+  <div class="section-title">Skills &amp; <span>Competencies</span></div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title"><i class="ti ti-code"></i> Data &amp; Programming</div>
+      <div class="skill-tags">
+        <span class="tag gold">Python</span>
+        <span class="tag gold">SQL</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">EDA</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title"><i class="ti ti-chart-bar"></i> Reporting &amp; Visualization</div>
+      <div class="skill-tags">
+        <span class="tag gold">Advanced Excel</span>
+        <span class="tag gold">KPI Dashboards</span>
+        <span class="tag">Pivot Tables</span>
+        <span class="tag">Power Query</span>
+        <span class="tag">VLOOKUP / XLOOKUP</span>
+        <span class="tag">Data Reporting</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title"><i class="ti ti-cpu"></i> Machine Learning &amp; AI</div>
+      <div class="skill-tags">
+        <span class="tag">ML Algorithms</span>
+        <span class="tag">Predictive Modeling</span>
+        <span class="tag">Generative AI</span>
+        <span class="tag">Database Management</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title"><i class="ti ti-users"></i> Soft Skills</div>
+      <div class="skill-tags">
+        <span class="tag gold">Communication</span>
+        <span class="tag">Team Collaboration</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Time Management</span>
+        <span class="tag">Adaptability</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<div class="divider"></div>
+<section id="projects">
+  <div class="section-label">What I've Built</div>
+  <div class="section-title">Key <span>Projects</span></div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-icon-wrap"><i class="ti ti-search"></i></div>
+          <div class="project-title" style="margin-top:10px;">Customer Insights via EDA</div>
+        </div>
+        <span class="project-badge">Python</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Cleaned and preprocessed 10,000+ rows of transactional data using Pandas &amp; NumPy, then generated statistical visualizations to uncover buying patterns and seasonal trends.</p>
+        <div class="project-metrics">
+          <span class="metric-pill"><i class="ti ti-trending-up"></i>+10% repeat sales</span>
+          <span class="metric-pill"><i class="ti ti-database"></i>10K+ rows</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">Pandas</span><span class="stack-tag">NumPy</span><span class="stack-tag">Matplotlib</span><span class="stack-tag">Seaborn</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-icon-wrap"><i class="ti ti-database"></i></div>
+          <div class="project-title" style="margin-top:10px;">Relational DB Design &amp; Querying</div>
+        </div>
+        <span class="project-badge">SQL</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Designed normalized database schemas for a mock retail business. Wrote advanced SQL queries using joins, subqueries, and window functions to extract performance metrics.</p>
+        <div class="project-metrics">
+          <span class="metric-pill"><i class="ti ti-bolt"></i>Optimized query time</span>
+          <span class="metric-pill"><i class="ti ti-table"></i>Indexed tables</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">SQL</span><span class="stack-tag">Window Functions</span><span class="stack-tag">Joins</span><span class="stack-tag">Indexing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-icon-wrap"><i class="ti ti-chart-pie"></i></div>
+          <div class="project-title" style="margin-top:10px;">Interactive KPI Dashboard</div>
+        </div>
+        <span class="project-badge">Excel</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Built an executive-level sales performance dashboard in Advanced Excel with pivot tables, pivot charts, and slicers. Automated data cleaning via Power Query.</p>
+        <div class="project-metrics">
+          <span class="metric-pill"><i class="ti ti-clock"></i>-20% reporting time</span>
+          <span class="metric-pill"><i class="ti ti-adjustments"></i>Interactive slicers</span>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Excel</span><span class="stack-tag">Power Query</span><span class="stack-tag">Pivot Tables</span><span class="stack-tag">KPI Design</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<div class="divider"></div>
+<section id="education">
+  <div class="section-label">Academic Background</div>
+  <div class="section-title">Education &amp; <span>Certifications</span></div>
+  <div class="edu-timeline">
+    <div class="edu-card">
+      <div class="edu-icon"><i class="ti ti-certificate"></i></div>
+      <div>
+        <div class="edu-degree">Professional Certificate — AI &amp; Data Science</div>
+        <div class="edu-inst">Intellipaat &nbsp;·&nbsp; In collaboration with IIT Indore</div>
+        <div class="edu-year">2024 – 2025</div>
+        <div class="edu-note">Advanced Python, SQL Databases, Machine Learning, Generative AI — with hands-on case studies and database management tasks.</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon"><i class="ti ti-school"></i></div>
+      <div>
+        <div class="edu-degree">Bachelor of Computer Applications (BCA)</div>
+        <div class="edu-inst">Maharaja Ganga Singh University, Bikaner, Rajasthan</div>
+        <div class="edu-year">2022 – 2025</div>
+        <div class="edu-note">Core coursework: DBMS, SQL, Software Engineering, Computer Networks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<div class="divider"></div>
+<section>
+  <div class="section-label">Beyond the Screen</div>
+  <div class="section-title">Achievements &amp; <span>Activities</span></div>
+  <div class="achievements-grid">
+    <div class="ach-card">
+      <div class="ach-icon"><i class="ti ti-award"></i></div>
+      <div>
+        <div class="ach-title">IIT Indore Certified</div>
+        <div class="ach-desc">Earned a Professional Certificate in AI &amp; Data Science through an intensive program in collaboration with IIT Indore.</div>
+      </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon"><i class="ti ti-medal"></i></div>
+      <div>
+        <div class="ach-title">Gold Medal — University Cricket</div>
+        <div class="ach-desc">Awarded a Gold Medal in the University Cricket Tournament, demonstrating teamwork, discipline, and competitive strategy under pressure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="divider"></div>
+<section id="contact" style="background:var(--navy);margin:0;padding:3.5rem 2.5rem;">
+  <div class="section-label" style="color:var(--gold2);">Get In Touch</div>
+  <div class="section-title" style="color:#FFFFFF;">Let's <span>Connect</span></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:700px;">
+    <a href="mailto:luckysim574@gmail.com" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:1.2rem;display:flex;align-items:center;gap:12px;transition:background .2s;">
+      <i class="ti ti-mail" style="font-size:20px;color:var(--gold);"></i>
+      <div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:2px;">Email</div><div style="font-size:13px;color:#fff;">luckysim574@gmail.com</div></div>
+    </a>
+    <a href="tel:+917877573509" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:1.2rem;display:flex;align-items:center;gap:12px;">
+      <i class="ti ti-phone" style="font-size:20px;color:var(--gold);"></i>
+      <div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:2px;">Phone</div><div style="font-size:13px;color:#fff;">+91 7877573509</div></div>
+    </a>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:1.2rem;display:flex;align-items:center;gap:12px;">
+      <i class="ti ti-map-pin" style="font-size:20px;color:var(--gold);"></i>
+      <div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:2px;">Location</div><div style="font-size:13px;color:#fff;">Bikaner, Rajasthan, India</div></div>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:1.2rem;display:flex;align-items:center;gap:12px;">
+      <i class="ti ti-briefcase" style="font-size:20px;color:var(--gold);"></i>
+      <div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:2px;">Status</div><div style="font-size:13px;color:var(--gold2);">Open to Work</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Lakshay Sharma</div>
+  <div class="footer-links">
+    <a href="mailto:luckysim574@gmail.com"><i class="ti ti-mail"></i> Email</a>
+    <a href="https://linkedin.com/in/lakshay-sharma" target="_blank"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/lakshay-sharma" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
+  </div>
+  <div class="footer-copy">© 2025 Lakshay Sharma · Junior Data Analyst · Built for Recruiters</div>
+</footer>
+
+</body>
+</html>
